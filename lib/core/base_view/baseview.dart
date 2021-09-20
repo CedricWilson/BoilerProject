@@ -1,4 +1,4 @@
-import 'package:user_test/utils/barrel.dart';
+import 'package:user_test/presentation/utils/barrel.dart';
 
 abstract class BaseView extends StatefulWidget {}
 

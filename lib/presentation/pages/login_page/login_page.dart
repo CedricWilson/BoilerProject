@@ -1,4 +1,4 @@
-import 'package:user_test/utils/barrel.dart';
+import 'package:user_test/presentation/utils/barrel.dart';
 
 class LoginPage extends BaseView {
   @override
@@ -9,13 +9,13 @@ class _LoginPageState extends BaseViewState{
   @override
   Widget builder(BuildContext context) {
     return InkWell(
-      onTap: () {
+      onTap: (){
         Get.toNamed(Routes.home);
       },
-      child: Container(
-        height: 100,
-        color: Colors.red,
-      ),
+          child: Container(
+          height: 300,
+          color: Colors.red,
+        ),
     );
   }
 }
