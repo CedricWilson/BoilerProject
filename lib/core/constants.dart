@@ -1,0 +1,38 @@
+import 'package:hive/hive.dart';
+
+HiveAesCipher getKey() {
+  return HiveAesCipher([
+    1,
+    9,
+    6,
+    8,
+    9,
+    7,
+    7,
+    8,
+    3,
+    1,
+    8,
+    4,
+    5,
+    0,
+    9,
+    8,
+    6,
+    8,
+    4,
+    2,
+    4,
+    3,
+    6,
+    7,
+    9,
+    8,
+    6,
+    5,
+    0,
+    4,
+    6,
+    8,
+  ]);
+}

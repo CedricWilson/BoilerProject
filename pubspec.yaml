@@ -35,12 +35,14 @@ dependencies:
 
   #Storage
   hive: ^2.0.4
-  hive_flutter: 
+  hive_flutter:
+  encrypt: ^5.0.1 
 
   #Utils
   dartz: ^0.10.0
   fluttertoast: ^8.0.8
   path_provider: 
+  logger:
   
 dev_dependencies:
   flutter_test:

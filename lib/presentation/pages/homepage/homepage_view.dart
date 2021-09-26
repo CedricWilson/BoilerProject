@@ -1,5 +1,5 @@
 import 'package:user_test/di/di.dart';
-import 'package:user_test/presentation/utils/barrel.dart';
+import 'package:user_test/presentation/utils/utils.dart';
 
 class HomePage extends BaseView {
   @override
@@ -15,6 +15,7 @@ class _HomePageState extends BaseViewState {
       onTap: () {
         // Get.toNamed(Routes.login);
 
+        // x.fetchUser();
         x.saveUser();
       },
       child: Container(

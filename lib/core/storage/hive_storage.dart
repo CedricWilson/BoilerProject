@@ -1,50 +1,49 @@
 import 'package:hive/hive.dart';
+import 'package:user_test/presentation/utils/utils.dart';
 
 import '../core.dart';
-
-enum Type { UserId, Name, Email }
 
 class HiveStorage {
   Box<dynamic> box;
 
   HiveStorage({required this.box});
 
-  static get userId => 'userid';
-  static get name => 'name';
-  static get email => 'email';
-
   void saveUser(User user) {
+    if (box.length == 0) {
+      box.add(user);
+    } else {
+      User userModel = box.getAt(0);
+      //Add new variable here accordingly
+      box.putAt(
+        0,
+        User(
+            userId: user.userId ?? userModel.userId,
+            name: user.name ?? userModel.name,
+            email: user.email ?? userModel.email,
+            token: Encryptor.encrypt(user.token) ?? userModel.token),
+      );
+    }
 
-    _save(Type.UserId, user.userId);
-    _save(Type.Name, user.name);
-    _save(Type.Email, user.email);
-
-    getUser();
+    printUser();
   }
 
-  getUser() {
-    print('Current User: ' +
-        box.get(userId) +
-        ' ' +
-        box.get(name) +
-        ' ' +
-        box.get(email));
-  }
-
-  _save(Type type, dynamic val) {
-    if (val != null) {
-      box.put(_getKeyType(type), val);
+  User fetchUser() {
+    try {
+      User user = box.getAt(0);
+      user.token = Encryptor.decrypt(user.token);
+      return user;
+    } catch (e) {
+      lg('Database not initialized Yet!');
+      return User();
     }
   }
 
-  String _getKeyType(Type type) {
-    switch (type) {
-      case Type.Name:
-        return name;
-      case Type.UserId:
-        return userId;
-      case Type.Email:
-        return email;
-    }
+  printUser() {
+    User user = box.getAt(0);
+    print('Current User: ' + user.toJson().toString());
+  }
+
+  reset() {
+    box.clear();
   }
 }

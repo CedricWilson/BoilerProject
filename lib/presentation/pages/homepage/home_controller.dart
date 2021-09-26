@@ -1,6 +1,6 @@
 import 'package:user_test/core/core.dart';
 import 'package:user_test/presentation/domain/usecases/save_user.dart';
-import 'package:user_test/presentation/utils/barrel.dart';
+import 'package:user_test/presentation/utils/utils.dart';
 
 class HomeController extends GetxController {
   SaveUsecase? saveUsecase;
@@ -25,8 +25,12 @@ class HomeController extends GetxController {
 
   saveUser() {
     User(
-      userId: '2',
-      email: 'cedricthanikkal@gmail.com',
+      userId: '34',
+      name: 'Vaibav',
     ).save();
+  }
+
+  fetchUser() {
+    print(User()().email);
   }
 }

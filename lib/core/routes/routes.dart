@@ -1,5 +1,5 @@
 import 'package:user_test/di/pages.dart';
-import 'package:user_test/presentation/utils/barrel.dart';
+import 'package:user_test/presentation/utils/utils.dart';
 
 class Routes {
   static String get login => '/login';

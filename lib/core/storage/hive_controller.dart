@@ -1,20 +1,27 @@
-
-import 'package:user_test/presentation/utils/barrel.dart';
+import 'package:user_test/presentation/utils/utils.dart';
 
 import '../core.dart';
 
 class HiveController extends GetxController {
-  HiveStorage storage;
+  HiveStorage? storage;
 
-  HiveController({required this.storage});
+  HiveController({this.storage});
 
-  saveUser(User user) {
-    
-
+  void saveUser(User user) {
     if (user.userId != null) {
       Global.userId = user.userId;
     }
-
-    storage.saveUser(user);
+    // storage!.reset();
+    storage!.saveUser(user);
   }
+
+  User fetchUser() {
+    return storage!.fetchUser();
+  }
+
+  bool verifyUser() {
+    return true;
+  }
+
+  void removeUser() {}
 }

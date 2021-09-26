@@ -1,4 +1,4 @@
-import 'package:user_test/presentation/utils/barrel.dart';
+import 'package:user_test/presentation/utils/utils.dart';
 
 class LoginPage extends BaseView {
   @override
