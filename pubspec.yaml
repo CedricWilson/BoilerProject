@@ -43,6 +43,7 @@ dependencies:
   fluttertoast: ^8.0.8
   path_provider: 
   logger:
+  sizer: ^2.0.15
   
 dev_dependencies:
   flutter_test:

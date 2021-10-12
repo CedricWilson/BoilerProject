@@ -11,22 +11,24 @@ import 'package:user_test/presentation/domain/domain.dart';
 GetIt si = GetIt.instance;
 
 Future<void> init() async {
-  si.registerFactory(() => HomeController(saveUsecase: si()));
+  si.registerFactory(() => HomeController(si()));
   si.registerFactory(() => HiveController(storage: si()));
 
 //-----------------------------------Usecase-----------------------------------------------//
 
-  si.registerLazySingleton<SaveUsecase>(
-      () => SaveUsecase(userRepository: si()));
+  si.registerLazySingleton<TestUsecase>(
+      () => TestUsecase(userRepository: si()));
 
 //------------------------------------Repo-------------------------------------------------//
 
   si.registerLazySingleton<UserRepository>(
-      () => UserRepositoryImpl(datasource: si()));
+      () => UserRepositoryImpl(si()));
 
 //------------------------------------Datasource-------------------------------------------//
 
   si.registerLazySingleton<UserDatasource>(() => UserDatasourceImpl(api: si()));
+  si.registerLazySingleton<TestDatasource>(() => ITestDatasource(api: si()));
+
 
 //---------------------------------Singletons----------------------------------------------//
 

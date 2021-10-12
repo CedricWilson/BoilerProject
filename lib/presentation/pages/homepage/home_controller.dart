@@ -1,11 +1,11 @@
 import 'package:user_test/core/core.dart';
-import 'package:user_test/presentation/domain/usecases/save_user.dart';
+import 'package:user_test/presentation/domain/usecases/test_object.dart';
 import 'package:user_test/presentation/utils/utils.dart';
 
 class HomeController extends GetxController {
-  SaveUsecase? saveUsecase;
+  TestUsecase? testUsecase;
 
-  HomeController({this.saveUsecase});
+  HomeController(this.testUsecase);
 
   @override
   void onInit() {
@@ -14,12 +14,12 @@ class HomeController extends GetxController {
   }
 
   fetchApi() async {
-    var response = await saveUsecase!.call();
+    var response = await testUsecase!.call();
 
     response.fold((failure) async {
       print('HomeController: ' + failure.message);
     }, (result) async {
-      print(result);
+      print(result.toJson());
     });
   }
 
@@ -31,6 +31,7 @@ class HomeController extends GetxController {
   }
 
   fetchUser() {
-    print(User()().email);
+    // print(User()().email);
+    print(User().toString());
   }
 }

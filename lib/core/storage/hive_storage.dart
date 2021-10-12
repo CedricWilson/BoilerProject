@@ -13,14 +13,14 @@ class HiveStorage {
       box.add(user);
     } else {
       User userModel = box.getAt(0);
-      //Add new variable here accordingly
+      //!Add new variable here accordingly
       box.putAt(
         0,
         User(
             userId: user.userId ?? userModel.userId,
             name: user.name ?? userModel.name,
             email: user.email ?? userModel.email,
-            token: Encryptor.encrypt(user.token) ?? userModel.token),
+            token: user.token ?? userModel.token),
       );
     }
 
@@ -29,9 +29,7 @@ class HiveStorage {
 
   User fetchUser() {
     try {
-      User user = box.getAt(0);
-      user.token = Encryptor.decrypt(user.token);
-      return user;
+      return box.getAt(0);
     } catch (e) {
       lg('Database not initialized Yet!');
       return User();
@@ -40,7 +38,7 @@ class HiveStorage {
 
   printUser() {
     User user = box.getAt(0);
-    print('Current User: ' + user.toJson().toString());
+    print('Current User: ' + user.toString());
   }
 
   reset() {

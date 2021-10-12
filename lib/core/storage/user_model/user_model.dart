@@ -19,8 +19,8 @@ class User {
   @HiveField(3)
   String? token;
 
-  //For every field added here please also add to HiveStorage in Core and
-  //(Optional) in 'toJson' below.
+  //!For every field added here please also add to HiveStorage in Core and
+  //!(Optional) in 'toJson' below.
 
   User({this.userId, this.name, this.email, this.token});
 
@@ -30,15 +30,17 @@ class User {
 
   User call() => User._fetchUser();
 
-  Map<String, dynamic> toJson() =>
-      {'userId': userId, 'name': name, 'email': email, 'token': token};
-
-  void save() {
-    return si<HiveController>().saveUser(this);
-  }
+  void save() => si<HiveController>().saveUser(this);
 
   void verifyUser() {}
 
-  void removeUser() {}
+  @override
+  String toString() => {
+        'userId': userId,
+        'name': name,
+        'email': email,
+        'token': token
+      }.toString();
 
+  void removeUser() {}
 }

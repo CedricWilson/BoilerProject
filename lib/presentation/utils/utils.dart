@@ -9,3 +9,7 @@ export 'functions.dart';
 export 'encryption.dart';
 export 'extensions/string.dart';
 
+export 'package:sizer/sizer.dart';
+
+
+

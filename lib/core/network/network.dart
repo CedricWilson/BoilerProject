@@ -77,7 +77,7 @@ class Api {
 
   Failure _error(DioError e) {
     if (e.type == DioErrorType.connectTimeout) {
-      Utils.toast("Connection Timeout");
+      Utils.toast('Connection Timeout');
       return Failure(message: 'Connection Timeout');
     } else {
       print(e.response?.data);

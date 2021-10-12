@@ -14,9 +14,9 @@ class _HomePageState extends BaseViewState {
     return InkWell(
       onTap: () {
         // Get.toNamed(Routes.login);
-
-        // x.fetchUser();
-        x.saveUser();
+        // x.fetchApi();
+        x.fetchUser();
+        // x.saveUser();
       },
       child: Container(
         height: 200,

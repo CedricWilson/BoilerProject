@@ -3,12 +3,12 @@ import 'package:user_test/core/core.dart';
 import 'package:user_test/presentation/data/data.dart';
 import 'package:user_test/presentation/domain/domain.dart';
 
-class SaveUsecase{
+class TestUsecase{
   final UserRepository userRepository;
 
-  SaveUsecase({required this.userRepository});
+  TestUsecase({required this.userRepository});
 
-  Future<Either<Failure,String>> call() async{
+  Future<Either<Failure,EmployeeModel>> call() async{
     return await userRepository.storeUser();
   }
 }
