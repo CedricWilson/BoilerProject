@@ -7,7 +7,7 @@ class HomePage extends BaseView {
 }
 
 class _HomePageState extends BaseViewState {
-  var x = Get.put(si<HomeController>());
+  var x = Get.put(sl<HomeController>());
 
   @override
   Widget builder(BuildContext context) {

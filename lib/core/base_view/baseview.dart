@@ -13,13 +13,10 @@ abstract class BaseViewState extends State {
   Widget builder(BuildContext context);
 }
 
+// ignore: must_be_immutable
 class Screen extends GetPage {
   Screen({
-    final String? name,
-    final Function? page,
-  }) : super(
-          name: name!,
-          page: () => page!(),
-          transition: Transition.cupertino,
-        );
+    required final String name,
+    required final Function page,
+  }) : super(name: name, page: () => page(), transition: Transition.cupertino);
 }

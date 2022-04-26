@@ -1,4 +1,3 @@
-import 'package:user_test/di/pages.dart';
 import 'package:user_test/presentation/utils/utils.dart';
 
 class Routes {
@@ -6,13 +5,7 @@ class Routes {
   static String get home => '/home';
 
   static final routes = [
-    Screen(
-      name: home,
-      page: () => HomePage(),
-    ),
-    Screen(
-      name: login,
-      page: () => LoginPage(),
-    ),
+    Screen(name: home, page: () => HomePage()),
+    Screen(name: login, page: () => LoginPage()),
   ];
 }

@@ -1,4 +1,3 @@
-import 'package:get/get.dart';
 import 'package:hive/hive.dart';
 import 'package:user_test/core/core.dart';
 import 'package:user_test/di/di.dart';
@@ -25,12 +24,12 @@ class User {
   User({this.userId, this.name, this.email, this.token});
 
   factory User._fetchUser() {
-    return si<HiveController>().fetchUser();
+    return sl<HiveController>().fetchUser();
   }
 
   User call() => User._fetchUser();
 
-  void save() => si<HiveController>().saveUser(this);
+  void save() => sl<HiveController>().saveUser(this);
 
   void verifyUser() {}
 

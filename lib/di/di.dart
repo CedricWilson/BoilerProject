@@ -8,42 +8,39 @@ import 'package:user_test/presentation/utils/utils.dart';
 import 'package:user_test/presentation/data/data.dart';
 import 'package:user_test/presentation/domain/domain.dart';
 
-GetIt si = GetIt.instance;
+GetIt sl = GetIt.instance;
 
 Future<void> init() async {
-  si.registerFactory(() => HomeController(si()));
-  si.registerFactory(() => HiveController(storage: si()));
+  sl.registerFactory(() => HomeController(sl()));
+  sl.registerFactory(() => HiveController(storage: sl()));
 
 //-----------------------------------Usecase-----------------------------------------------//
 
-  si.registerLazySingleton<TestUsecase>(
-      () => TestUsecase(userRepository: si()));
+  sl.registerLazySingleton<TestUsecase>(
+      () => TestUsecase(userRepository: sl()));
 
 //------------------------------------Repo-------------------------------------------------//
 
-  si.registerLazySingleton<UserRepository>(
-      () => UserRepositoryImpl(si()));
+  sl.registerLazySingleton<UserRepository>(() => UserRepositoryImpl(sl()));
 
 //------------------------------------Datasource-------------------------------------------//
 
-  si.registerLazySingleton<UserDatasource>(() => UserDatasourceImpl(api: si()));
-  si.registerLazySingleton<TestDatasource>(() => ITestDatasource(api: si()));
-
+  sl.registerLazySingleton<UserDatasource>(() => UserDatasourceImpl(api: sl()));
+  sl.registerLazySingleton<TestDatasource>(() => ITestDatasource(api: sl()));
 
 //---------------------------------Singletons----------------------------------------------//
 
   Box<dynamic> userBox = await Hive.openBox('user', encryptionCipher: getKey());
-  si.registerLazySingleton<Box<dynamic>>(() => userBox);
+  sl.registerLazySingleton<Box<dynamic>>(() => userBox);
 
-  si.registerLazySingleton<Dio>(() => Dio(BaseOptions(
-        connectTimeout: 30000,
-        receiveTimeout: 30000,
-        receiveDataWhenStatusError: true,
-      )));
+  sl.registerLazySingleton<Dio>(() => Dio(BaseOptions(
+      connectTimeout: 30000,
+      receiveTimeout: 30000,
+      receiveDataWhenStatusError: true)));
 
-  si.registerLazySingleton<Connectivity>(() => Connectivity());
-  si.registerLazySingleton<HiveStorage>(() => HiveStorage(box: si()));
+  sl.registerLazySingleton<Connectivity>(() => Connectivity());
+  sl.registerLazySingleton<HiveStorage>(() => HiveStorage(box: sl()));
 
-  si.registerLazySingleton<Api>(() => Api(dio: si(), networkInfo: si()));
-  si.registerLazySingleton<NetworkInfo>(() => NetworkInfo(connectivity: si()));
+  sl.registerLazySingleton<Api>(() => Api(dio: sl(), networkInfo: sl()));
+  sl.registerLazySingleton<NetworkInfo>(() => NetworkInfo(connectivity: sl()));
 }
